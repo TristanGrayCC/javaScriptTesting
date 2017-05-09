@@ -30,19 +30,28 @@ ShoppingBasket.prototype ={
       return 0;
     }
   },
+  included: function(lookingItem, items) {
+    for(var item of items) {
+      if(item.name === lookingItem.name ) {
+        return true;
+      }
+    }
+    console.log(lookingItem);
+    return false;
+  },
 
   getBasketPrice: function(){
     var totalPrice = 0;
     var uniqItems = [];
     for (item of this.basket){
       totalPrice += item.price;
-      if (uniqItems.includes(item)){
+      if (!this.included(item, uniqItems)){
         uniqItems.push(item);
       };
-      for (uniqItem of uniqItems){
-        totalPrice -= this.bogofDiscount(uniqItem);
-      };
     }
+    for (uniqItem of uniqItems){
+      totalPrice -= this.bogofDiscount(uniqItem);
+    };
     if (totalPrice > 2000) {
       totalPrice = totalPrice*0.9;
     }
