@@ -36,7 +36,7 @@ ShoppingBasket.prototype ={
     var uniqItems = [];
     for (item of this.basket){
       totalPrice += item.price;
-      if (!uniqItems.includes(item)){
+      if (uniqItems.includes(item)){
         uniqItems.push(item);
       };
       for (uniqItem of uniqItems){

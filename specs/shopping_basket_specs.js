@@ -47,22 +47,11 @@ describe("Shopping Basket", function(){
     assert.equal(2565, shopping_basket.getBasketPrice());
   });
 
-  it("Bogof discount",function(){
-    var item1 = new Item("Champagne", 3000, true);
-    var item2 = new Item("Champagne", 3000, true);
-    var shopping_basket = new ShoppingBasket();
-    shopping_basket.add(item1);
-    shopping_basket.add(item2);
-    var result = shopping_basket.bogofDiscount(item1);
-    assert.equal(0, result);
-  });
-
   it("Can bogof discount",function(){
-    var item1 = new Item("Champagne", 3000, true);
-    var item2 = new Item("Champagne", 3000, true);
+    var item1 = new Item("Ham", 200, true);
     var shopping_basket = new ShoppingBasket();
     shopping_basket.add(item1);
     shopping_basket.add(item1);
-    assert.equal(3000, shopping_basket.getBasketPrice());
+    assert.equal(200, shopping_basket.getBasketPrice());
   });
 });
